@@ -1,0 +1,376 @@
+* {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #dedede;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 650px;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #252525;
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1%;
+}
+
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.stationdata {
+  margin-top: 1vmax;
+}
+
+.stationdata h2 {
+  color: #fafafa;
+}
+
+.stationdata .stationwrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stationdata .stationwrapper p,
+.stationdata .stationwrapper p span {
+  margin-right: 5px;
+  color: #fafafa;
+}
+
+.stationdata .stationwrapper p span::before {
+  content: "|";
+  margin-right: 5px;
+  color: #fafafa;
+}
+
+.stationdata .stationwrapper p:first-of-type span::before {
+  content: "";
+  margin-right: 0;
+}
+
+.stationdata .stationwrapper p a::before {
+  content: "|";
+  margin-right: 5px;
+}
+
+.singleDataWrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin: 1vmax 0;
+  justify-content: center;
+}
+
+.backgroundWrapper {
+  background-color: rgba(65, 65, 65, 0.4);
+  margin: 0.5vmax;
+  padding: 0.5vmax;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.backgroundWrapper:first-of-type {
+  margin-left: 0;
+}
+
+.backgroundWrapper:last-of-type {
+  margin-right: 0;
+}
+
+.backgroundWrapper .title {
+  font-size: 15px;
+  word-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.backgroundWrapper .value {
+  font-size: 30px;
+  margin: 1vmax 0;
+  grid-column: 1/4;
+  grid-row: 2/3;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  color: #fafafa;
+}
+
+.backgroundWrapper .unit {
+  font-size: smaller;
+}
+
+.backgroundWrapper .date {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  font-size: 13px;
+  align-self: end;
+}
+
+.backgroundWrapper .time {
+  grid-column: 3/4;
+  grid-row: 3/4;
+  font-size: 13px;
+  align-self: end;
+  justify-self: end;
+  text-align: right;
+}
+
+.backgroundWrapper .date span,
+.backgroundWrapper .time span {
+  display: block;
+}
+
+.graphWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1vmax;
+  grid-gap: 1vmax;
+}
+
+#temperatureGraph,
+#rainfallGraph,
+#solarRadiationGraph {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(65, 65, 65, 0.4);
+}
+
+#temperatureGraph .headlineWrapper,
+#solarRadiationGraph .headlineWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+#rainfallGraph {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+
+#temperatureGraph h3,
+#rainfallGraph h3,
+#solarRadiationGraph h3 {
+  margin: 1vmax 0 0 1vmax;
+  text-transform: uppercase;
+}
+
+#temperatureGraph h3 span,
+#rainfallGraph h3 span,
+#solarRadiationGraph h3 span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+#temperatureGraph label,
+#solarRadiationGraph label {
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 1vmax;
+}
+
+#temperatureGraph label span,
+#solarRadiationGraph label span {
+  margin-right: 0.5vmax;
+}
+
+#temperatureGraph label input,
+#solarRadiationGraph label input {
+  display: inline-block;
+  text-align: center;
+  color: black;
+  font-size: 17px;
+}
+
+#temperatureGraph svg {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+
+.axis line,
+.axis path {
+  stroke: #fafafa;
+}
+
+.axis text {
+  fill: #fafafa;
+  font-size: 1vmax;
+}
+
+#rainfallGraph .xAxis text {
+  font-size: 0.8vmax;
+}
+
+#rainfallGraph #averageLine {
+  stroke-linecap: round;
+  stroke-width: 3px;
+  stroke: #32cd32;
+  padding: 10px 0;
+}
+
+#rainfallGraph .legendCircle1 {
+  fill: #0381ff;
+}
+
+#rainfallGraph .legendCircle2 {
+  fill: #32cd32;
+}
+
+#rainfallGraph .legendText1,
+#rainfallGraph .legendText2 {
+  fill: white;
+  font-size: 1vmax;
+}
+
+.tempPath {
+  fill: none;
+  stroke: #32cd32;
+}
+
+.solarPath {
+  fill: #ff0381;
+  stroke: #ff0381;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: #32a6cd;
+}
+
+.focus text {
+  font-size: 14px;
+}
+
+.tooltip {
+  fill: white;
+  stroke: #000;
+}
+
+.tooltip-date,
+.tooltip-value {
+  font-weight: bold;
+}
+
+.bar {
+  fill: #0381ff;
+}
+
+.bar:hover {
+  fill: rgba(3, 138, 255, 0.5);
+}
+
+.snackbar {
+  height: 1vh;
+}
+
+.snackbar #text {
+  position: relative;
+  top: -6px;
+  margin-left: 1vmax;
+}
+
+@media only screen and (max-width: 1750px) {
+  .singleDataWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1vmax 0;
+    justify-content: center;
+  }
+  .backgroundWrapper {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
+  }
+  .backgroundWrapper:first-of-type {
+    margin-left: 0.5vmax;
+  }
+  .backgroundWrapper:last-of-type {
+    margin-right: 0.5vmax;
+  }
+  .graphWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .axis text {
+    font-size: 1.2vmax;
+  }
+  #rainfallGraph text,
+  #rainfallGraph .xAxis text {
+    font-size: 2vmax;
+  }
+  #temperatureGraph {
+    grid-row: 1/2;
+  }
+  #rainfallGraph {
+    grid-column: 1/2;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .singleDataWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1vmax 0;
+    justify-content: center;
+  }
+  .backgroundWrapper {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
+    margin: 0.5vmax;
+  }
+  .backgroundWrapper:first-of-type {
+    margin-left: 0;
+  }
+  .backgroundWrapper:last-of-type {
+    margin-right: 0;
+  }
+  .axis text,
+  .xAxis text {
+    font-size: 2vmax;
+  }
+  #rainfallGraph text,
+  #rainfallGraph .xAxis text {
+    font-size: 2.3vmax;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .stationdata .stationwrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .stationdata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .axis text,
+  .xAxis text {
+    font-size: 2vmax;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .singleDataWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #rainfallGraph text,
+  #rainfallGraph .xAxis text {
+    font-size: 2.8vmax;
+  }
+}
